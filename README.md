@@ -23,7 +23,7 @@ docker run --rm --volumes-from prosody-data -it prosody prosodyctl register ADMI
 - ...
 
 ```sh
-docker run --rm --volumes-from prosody-data -it vim vim /etc/prosody/prosody.cfg.lua
+docker run --rm --volumes-from prosody-data -it vim klingtdotnet/vim /etc/prosody/prosody.cfg.lua
 ```
 
 ### Import Certificates Into the Data Container
