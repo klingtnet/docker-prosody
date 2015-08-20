@@ -39,5 +39,5 @@ docker run --rm --volumes-from prosody-data --volume /path/to/certs:/cert -it pr
 - now you can run prosody
 
 ```sh
-docker run --rm -p 5222:5222 -p 5269:5269 --volumes-from prosody-data -it prosody prosodyctl start
+docker run --rm -p 5222:5222 -p 5269:5269 --volumes-from prosody-data -it klingtdotnet/prosody prosodyctl start
 ```
