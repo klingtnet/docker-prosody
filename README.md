@@ -5,7 +5,7 @@
 ### Create the Data Container
 
 ```sh
-docker create --name prosody-data --volume /etc/prosody --volume /var/log/prosody --volume /var/lib/prosody prosody
+docker create --name prosody-data --volume /etc/prosody --volume /var/log/prosody --volume /var/lib/prosody klingtdotnet/prosody
 ```
 
 ### Register an Admin User
@@ -13,7 +13,7 @@ docker create --name prosody-data --volume /etc/prosody --volume /var/log/prosod
 - replace `ADMIN`, `HOST`, `PASSWORD` with the actual values
 
 ```sh
-docker run --rm --volumes-from prosody-data -it prosody prosodyctl register ADMIN HOST PASSWORD
+docker run --rm --volumes-from prosody-data -it klingtdotnet/prosody prosodyctl register ADMIN HOST PASSWORD
 ```
 
 ### Edit the Config File
@@ -29,7 +29,7 @@ docker run --rm --volumes-from prosody-data -it vim klingtdotnet/vim /etc/prosod
 ### Import Certificates Into the Data Container
 
 ```sh
-docker run --rm --volumes-from prosody-data --volume /path/to/certs:/cert -it prosody /bin/bash
+docker run --rm --volumes-from prosody-data --volume /path/to/certs:/cert -it klingtdotnet/prosody /bin/bash
 ```
 
 - copy your certificates from `/cert` to `/etc/prosody` or wherever you like them to be
