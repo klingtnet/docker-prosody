@@ -42,3 +42,9 @@ docker run --rm --volumes-from prosody-data --volume /path/to/certs:/cert -it kl
 ```sh
 docker run --rm -p 5222:5222 -p 5269:5269 --volumes-from prosody-data -it klingtdotnet/prosody prosodyctl start
 ```
+
+#### as SystemD unit
+
+- `cp prosody@.service /etc/systemd/system/ && cp prosody /etc/sysconfig/`
+- customize the port numbers in `/etc/sysconfig/prosody` and add any port you want to expose in the `ExecStart` lifecycle of your `/etc/systemd/system/prosody@.service` (you have at least to export the `S2S` and `C2S` ports)
+- instead of editing `/etc/systemd/system/prosody@.service` you can override only the `ExecStart` lifecycle using `systemctl edit prosody@` or override the whole file with `systemctl edit --full prosody@`
