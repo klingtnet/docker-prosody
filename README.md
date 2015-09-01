@@ -8,22 +8,23 @@
 docker create --name prosody-data --volume /etc/prosody --volume /var/log/prosody --volume /var/lib/prosody klingtdotnet/prosody
 ```
 
-### Register an Admin User
-
-- replace `ADMIN`, `HOST`, `PASSWORD` with the actual values
-
-```sh
-docker run --rm --volumes-from prosody-data -it klingtdotnet/prosody prosodyctl register ADMIN HOST PASSWORD
-```
-
 ### Edit the Config File
 
 - enter admin users
 - make security settings
-- ...
+- add virtual hosts, preferably in `/etc/prosody/conf.avail/` and symlink them to `/etc/prosody/conf.d/`
 
 ```sh
 docker run --rm --volumes-from prosody-data -it klingtdotnet/vim vim /etc/prosody/prosody.cfg.lua
+```
+
+### Register an Admin User
+
+- replace `ADMIN`, `HOST`, `PASSWORD` with the actual values
+- note that the `HOST` has to be defined as virtual host first
+
+```sh
+docker run --rm --volumes-from prosody-data -it klingtdotnet/prosody prosodyctl register ADMIN HOST PASSWORD
 ```
 
 ### Import Certificates Into the Data Container
