@@ -8,8 +8,8 @@ TimeoutStartSec=0
 EnvironmentFile=/etc/sysconfig/prosody
 ExecStartPre=-/usr/bin/docker rm -f prosody
 ExecStart=/usr/bin/docker run --name prosody \
-    -p ${PROSODY_C2S}:5222 \
-    -p ${PROSODY_S2S}:5269 \
+    -p ${PROSODY_IP}:${PROSODY_C2S}:5222 \
+    -p ${PROSODY_IP}:${PROSODY_S2S}:5269 \
     --volumes-from prosody-data klingtdotnet/prosody prosodyctl start
 ExecStop=/usr/bin/docker stop prosody
 
